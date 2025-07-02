@@ -44,7 +44,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBaA53z57qGL7r8I14LNoZ5fGl6rT1ei64',
+    apiKey: 'AIzaSyAAkPsIhs_DKSAbE0NV1vd_ndHzWln6YSA',
     appId: '1:88501148935:web:06fcffdd8c0bfaeefcb9a2',
     messagingSenderId: '88501148935',
     projectId: 'magic-checks',
@@ -53,7 +53,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC0w7Gx9Z1QaFPrjvfJ41NaE5yCiq8juBc',
+    apiKey: 'AIzaSyBm6A0Ui75rf7JUFzcv0dQ1uRC8-XReDJY',
     appId: '1:88501148935:android:04c52298feb3961dfcb9a2',
     messagingSenderId: '88501148935',
     projectId: 'magic-checks',
@@ -61,7 +61,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAnC3EwvNm08b4RcdsuLExun7JeugfayF0',
+    apiKey: 'AIzaSyC63oHJTBXvqJE_aNO3w_XBznnA3ZP5cmM',
     appId: '1:88501148935:ios:1829ba96b0a498c6fcb9a2',
     messagingSenderId: '88501148935',
     projectId: 'magic-checks',
@@ -70,11 +70,12 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBaA53z57qGL7r8I14LNoZ5fGl6rT1ei64',
+    apiKey: 'AIzaSyAAkPsIhs_DKSAbE0NV1vd_ndHzWln6YSA',
     appId: '1:88501148935:web:f206bda3f7d647bffcb9a2',
     messagingSenderId: '88501148935',
     projectId: 'magic-checks',
     authDomain: 'magic-checks.firebaseapp.com',
     storageBucket: 'magic-checks.firebasestorage.app',
   );
+
 }

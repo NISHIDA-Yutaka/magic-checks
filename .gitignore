@@ -76,3 +76,6 @@
 /macos/.symlinks/
 /macos/Pods/
 /macos/Runner/GeneratedPluginRegistrant.swift
+
+# Firebase configuration file. Contains API keys.
+lib/firebase_options.dart
