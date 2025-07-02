@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart' show kIsWeb; // Webかどうかを判定するために使用
+import 'package:firebase_auth/firebase_auth.dart'; // ★ 認証パッケージをインポート
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -31,13 +32,31 @@ final _router = GoRouter(
   ],
 );
 
+// ★★★ 修正点: main関数に匿名ログイン処理を追加 ★★★
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // 匿名認証でサインインする
+  try {
+    final userCredential = await FirebaseAuth.instance.signInAnonymously();
+    print("Signed in with temporary account: ${userCredential.user?.uid}");
+  } on FirebaseAuthException catch (e) {
+    // エラーハンドリング（本番ではより詳細な処理を推奨）
+    switch (e.code) {
+      case "operation-not-allowed":
+        print("Anonymous auth hasn't been enabled for this project.");
+        break;
+      default:
+        print("Unknown error signing in: ${e.message}");
+    }
+  }
+
   runApp(const MagicChecksApp());
 }
+
 
 class MagicChecksApp extends StatelessWidget {
   const MagicChecksApp({super.key});
@@ -414,12 +433,9 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
       appBar: AppBar(
         title: const Text('QRコードをスキャン'),
         actions: [
-          // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-          // ★★★ 修正点: 状態監視をやめ、シンプルなトグルボタンに変更 ★★★
-          // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
           if (!kIsWeb)
             IconButton(
-              icon: const Icon(Icons.flash_on), // アイコンを固定
+              icon: const Icon(Icons.flash_on),
               tooltip: '懐中電灯を切り替え',
               onPressed: () => _scannerController.toggleTorch(),
             ),
