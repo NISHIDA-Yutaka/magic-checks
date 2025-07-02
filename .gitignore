@@ -79,3 +79,6 @@
 
 # Firebase configuration file. Contains API keys.
 lib/firebase_options.dart
+
+# Google Services file for Android. Contains API keys.
+android/app/google-services.json
